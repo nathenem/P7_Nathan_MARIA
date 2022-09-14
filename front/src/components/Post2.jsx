@@ -1,6 +1,6 @@
-import test from "../assets/test.jpg";
+import index from "../assets/index.jpg";
 
-const Post = () => {
+const Post2 = () => {
   return (
     <>
       <div class="post">
@@ -14,11 +14,11 @@ const Post = () => {
           pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
           culpa qui officia deserunt mollit anim id est laborum.
         </p>
-        <img src={test} alt="image test post" style={{ width: 300 }} />
+        <img src={index} alt="image test post" style={{ width: 300 }} />
         <p>Date : XX/XX/XX - XX:XX</p>
       </div>
     </>
   );
 };
 
-export default Post;
+export default Post2;

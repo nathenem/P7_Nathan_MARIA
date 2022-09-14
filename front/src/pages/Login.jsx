@@ -1,7 +1,6 @@
 import { useForm } from "react-hook-form";
 import axios from "axios";
-import logo from "../assets/logo.png";
-import { Route } from "react-router-dom";
+import Header from "../components/Header";
 
 const Login = () => {
   const { register, handleSubmit } = useForm();
@@ -44,17 +43,7 @@ const Login = () => {
 
   return (
     <>
-      <header>
-        <a href="/">
-          <img src={logo} alt="Logo Groupomania" style={{ width: 300 }} />
-        </a>
-        <form id="header__form" onSubmit={handleSubmit(selectOption)}>
-          <button>Login</button>
-          <button>Sign up</button>
-        </form>
-      </header>
-      <br></br>
-      <br></br>
+      <Header />
       <main>
         <form class="component" onSubmit={handleSubmit(selectOption)}>
           <p>Select Option</p>
@@ -63,8 +52,6 @@ const Login = () => {
             <button>Sign up</button>
           </div>
         </form>
-        <br></br>
-        <br></br>
         <form class="component" onSubmit={handleSubmit(loginSubmit)}>
           <p>Login</p>
           <div>
@@ -77,8 +64,6 @@ const Login = () => {
           </div>
           <button>Login</button>
         </form>
-        <br></br>
-        <br></br>
         <form class="component" onSubmit={handleSubmit(signupSubmit)}>
           <p>Sign up</p>
           <div>
