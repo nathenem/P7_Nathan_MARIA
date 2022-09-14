@@ -1,0 +1,16 @@
+.component {
+  background-color: rgb(210, 249, 201);
+}
+
+.post {
+  background-color: rgb(251, 222, 222);
+}
+
+header {
+  width: 1300px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  align-content: center;
+}
