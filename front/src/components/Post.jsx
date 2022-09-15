@@ -1,11 +1,11 @@
 const Post = (props) => {
   return (
     <>
-      <div>
-        <p>@{props.post.author}</p>
-        <p>{props.post.textContent}</p>
-        <p>{props.post.file}</p>
-        <p>{props.post.date}</p>
+      <div className="forefront">
+        <p className="author">@{props.post.author}</p>
+        <p className="text">"{props.post.textContent}"</p>
+        <p className="image">{props.post.file}</p>
+        <p className="date">{props.post.date}</p>
       </div>
     </>
   );

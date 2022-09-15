@@ -1,4 +1,5 @@
 import logo from "../assets/logo.png";
+import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 const Header = () => {
@@ -8,13 +9,18 @@ const Header = () => {
     navigate("/login");
   };
 
+  useEffect(() => {
+    if (localStorage.token) {
+    }
+  }, []);
+
   return (
     <>
-      <header>
+      <header className="background">
         <a href="/">
-          <img src={logo} alt="Logo Groupomania" style={{ width: 300 }} />
+          <img src={logo} alt="Logo Groupomania" />
         </a>
-        <button onClick={logout}>Logout</button>
+        {localStorage.token && <button onClick={logout}>Logout</button>}
       </header>
     </>
   );

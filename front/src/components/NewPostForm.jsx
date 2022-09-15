@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 const NewPostForm = () => {
   const navigate = useNavigate();
   const { register, handleSubmit } = useForm();
+
   const sendNewPost = (data) => {
     axios
       .post("http://localhost:3000/api/posts", data)
@@ -21,7 +22,7 @@ const NewPostForm = () => {
 
   return (
     <>
-      <form onSubmit={handleSubmit(sendNewPost)}>
+      <form className="forefront" onSubmit={handleSubmit(sendNewPost)}>
         <p>New post</p>
         <div>
           <label>Text Content</label>

@@ -18,7 +18,7 @@ const SignupForm = () => {
 
   return (
     <>
-      <form onSubmit={handleSubmit(signupSubmit)}>
+      <form className="forefront" onSubmit={handleSubmit(signupSubmit)}>
         <p>Sign up</p>
         <div>
           <label>Email</label>

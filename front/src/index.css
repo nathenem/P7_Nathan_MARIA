@@ -1,17 +1,35 @@
-/*.component {
-  background-color: rgb(210, 249, 201);
-}
-
-.post {
-  background-color: rgb(251, 222, 222);
-}
-
-header {
+.background {
+  margin: 20px auto;
   width: 1300px;
   display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
-  justify-content: space-between;
-  align-content: center;
+  flex-flow: column;
+  align-items: center;
 }
-*/
+
+.forefront {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  margin: 20px;
+}
+
+img {
+  width: 300px;
+  margin: 20px;
+}
+
+.author {
+  font-size: 17px;
+}
+
+.text {
+  font-size: 20px;
+}
+
+.image {
+}
+
+.date {
+  font-size: 15px;
+  font-style: italic;
+}

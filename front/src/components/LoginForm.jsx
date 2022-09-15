@@ -23,7 +23,7 @@ const LoginForm = () => {
 
   return (
     <>
-      <form onSubmit={handleSubmit(loginSubmit)}>
+      <form className="forefront" onSubmit={handleSubmit(loginSubmit)}>
         <p>Login</p>
         <div>
           <label>Email</label>
