@@ -8,6 +8,7 @@ import { useState } from "react";
 
 const Home = () => {
   const [posts, setPosts] = useState([]);
+
   const navigate = useNavigate();
   useEffect(() => {
     if (!localStorage.token) {
@@ -19,6 +20,8 @@ const Home = () => {
     });
   }, []);
 
+  const newPost = () => {}; //display NewPostForm ==> TODO
+
   return (
     <>
       <Header />
@@ -26,7 +29,7 @@ const Home = () => {
         {posts.map((post) => {
           return <Post post={post} />;
         })}
-        <button>+</button> {/*New Post Button*/}
+        <button onClick={newPost}>+</button> {/*New Post Button*/}
       </main>
       <main class="component">
         <NewPostForm />

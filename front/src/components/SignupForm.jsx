@@ -18,11 +18,15 @@ const SignupForm = () => {
 
   return (
     <>
-      <form class="component" onSubmit={handleSubmit(signupSubmit)}>
+      <form onSubmit={handleSubmit(signupSubmit)}>
         <p>Sign up</p>
         <div>
           <label>Email</label>
           <input type="email" {...register("email")} />
+        </div>
+        <div>
+          <label>Username</label>
+          <input type="text" {...register("userName")} />
         </div>
         <div>
           <label>Password</label>

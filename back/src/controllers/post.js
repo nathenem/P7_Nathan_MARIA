@@ -23,10 +23,10 @@ exports.getOne = (req, res) => {
 
 // POST create
 exports.create = (req, res) => {
-  const postBody = req.body.post;
-  if (postBody && req.file) {
+  if (req.body && req.file) {
     const post = new Post({
-      ...postBody,
+      ...req.body,
+      author: req.body.userName,
       imageUrl: `${req.protocol}://${req.get("host")}/images/${
         req.file.filename
       }`,
@@ -38,9 +38,9 @@ exports.create = (req, res) => {
 
     res.status(201).json({ message: "Post et image publiés" });
   } else {
-    if (postBody) {
+    if (req.body) {
       const post = new Post({
-        ...postBody,
+        ...req.body,
       });
 
       post.save().catch((err) => {
