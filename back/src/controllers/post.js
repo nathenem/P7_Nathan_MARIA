@@ -1,7 +1,7 @@
 // Import model
 const Post = require("../model/post.model.js");
 const { find } = require("../model/user.model.js");
-const user = require("../model/user.model.js");
+const User = require("../model/user.model.js");
 
 // GET getAll
 exports.getAll = (req, res) => {
@@ -23,37 +23,45 @@ exports.getOne = (req, res) => {
 
 // POST create
 exports.create = (req, res) => {
-  if (req.body && req.file) {
-    const post = new Post({
-      ...req.body,
-      author: req.body.userName,
-      imageUrl: `${req.protocol}://${req.get("host")}/images/${
-        req.file.filename
-      }`,
-    });
+  User.findById(req.auth.userId)
+    .then((user) => {
+      const userName = user.userName;
+      if (req.body && req.file) {
+        const post = new Post({
+          ...req.body,
+          author: userName,
+          imageUrl: `${req.protocol}://${req.get("host")}/images/${
+            req.file.filename
+          }`,
+        });
 
-    post.save().catch((err) => {
+        post.save().catch((err) => {
+          console.log(err);
+        });
+
+        res.status(201).json({ message: "Post et image publiés" });
+      } else {
+        if (req.body) {
+          const post = new Post({
+            ...req.body,
+            author: userName,
+          });
+
+          post.save().catch((err) => {
+            console.log(err);
+          });
+
+          res.status(201).json({ message: "Post publié" });
+        } else {
+          res
+            .status(400)
+            .json({ erreur: "Veuillez correctement définir post et file." });
+        }
+      }
+    })
+    .catch((err) => {
       console.log(err);
     });
-
-    res.status(201).json({ message: "Post et image publiés" });
-  } else {
-    if (req.body) {
-      const post = new Post({
-        ...req.body,
-      });
-
-      post.save().catch((err) => {
-        console.log(err);
-      });
-
-      res.status(201).json({ message: "Post publié" });
-    } else {
-      res
-        .status(400)
-        .json({ erreur: "Veuillez correctement définir post et file." });
-    }
-  }
 };
 
 // PUT modify

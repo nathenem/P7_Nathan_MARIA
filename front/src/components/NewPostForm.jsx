@@ -1,13 +1,16 @@
 import { useForm } from "react-hook-form";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const NewPostForm = () => {
+  const navigate = useNavigate();
   const { register, handleSubmit } = useForm();
   const sendNewPost = (data) => {
     axios
       .post("http://localhost:3000/api/posts", data)
       .then((res) => {
         console.log(res);
+        navigate(0);
       })
       .catch((err) => {
         console.log(err);
