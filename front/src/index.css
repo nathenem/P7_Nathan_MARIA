@@ -1,35 +1,3 @@
-.background {
-  margin: 20px auto;
-  width: 1300px;
-  display: flex;
-  flex-flow: column;
-  align-items: center;
-}
-
-.forefront {
-  display: flex;
-  flex-flow: column;
-  align-items: center;
-  margin: 20px;
-}
-
 img {
-  width: 300px;
-  margin: 20px;
-}
-
-.author {
-  font-size: 17px;
-}
-
-.text {
-  font-size: 20px;
-}
-
-.image {
-}
-
-.date {
-  font-size: 15px;
-  font-style: italic;
+  width: 250px;
 }

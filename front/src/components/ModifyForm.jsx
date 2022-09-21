@@ -2,11 +2,11 @@ import { useForm } from "react-hook-form";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
-const NewPostForm = () => {
+const ModifyForm = () => {
   const navigate = useNavigate();
   const { register, handleSubmit } = useForm();
 
-  const sendNewPost = (data) => {
+  const modifyPost = (data) => {
     axios
       .post("http://localhost:3000/api/posts", data)
       .then((res) => {
@@ -22,8 +22,8 @@ const NewPostForm = () => {
 
   return (
     <>
-      <form className="forefront" onSubmit={handleSubmit(sendNewPost)}>
-        <p>New post</p>
+      <form className="forefront" onSubmit={handleSubmit(modifyPost)}>
+        <p>Modify the post</p>
         <div>
           <label>Text Content</label>
           <input type="Text" {...register("textContent")} />
@@ -36,10 +36,10 @@ const NewPostForm = () => {
             {...register("file.filename", "file")}
           />
         </div>
-        <button>Send new post</button>
+        <button>Commit changes</button>
       </form>
     </>
   );
 };
 
-export default NewPostForm;
+export default ModifyForm;

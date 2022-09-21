@@ -25,14 +25,14 @@ exports.getOne = (req, res) => {
 exports.create = (req, res) => {
   User.findById(req.auth.userId)
     .then((user) => {
-      const userName = user.userName;
-      if (req.body && req.file) {
+      if (1) {
         console.log("fichier");
         const post = new Post({
           ...req.body,
-          author: userName,
+          author: user.userName,
+          authorId: user._id,
           imageUrl: `${req.protocol}://${req.get("host")}/images/${
-            req.file.filename
+            req.body.file.filename
           }`,
         });
 
@@ -71,7 +71,7 @@ exports.modify = (req, res) => {
   console.log(req.body);
   Post.findById(req.params.id)
     .then((post) => {
-      if (req.auth.userId !== post.userId) {
+      if (req.auth.userId !== post.authorId) {
         return res.status(401).json();
       }
       if (req.file) {
@@ -111,8 +111,12 @@ exports.modify = (req, res) => {
 // DELETE delete
 exports.delete = (req, res) => {
   Post.findById(req.params.id).then((post) => {
-    if (req.auth.userId !== post.userId) {
-      return res.status(401).json();
+    if (req.auth.userId !== post.authorId) {
+      return res
+        .status(401)
+        .json({
+          message: "Vous ne pouvez pas supprimer le post de quelqu'un d'autre.",
+        });
     }
     Post.findByIdAndDelete(req.params.id).then(
       res.status(200).json({ message: "Le post a bien été supprimé." })

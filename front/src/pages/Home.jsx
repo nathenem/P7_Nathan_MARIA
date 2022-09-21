@@ -16,9 +16,15 @@ const Home = () => {
       navigate("/login");
     }
 
-    axios.get("http://localhost:3000/api/posts").then((res) => {
-      setPosts(res.data);
-    });
+    axios
+      .get("http://localhost:3000/api/posts")
+      .then((res) => {
+        setPosts(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+        alert(err.response.data.message);
+      });
   }, []);
 
   const newPost = () => {}; //display NewPostForm ==> TODO

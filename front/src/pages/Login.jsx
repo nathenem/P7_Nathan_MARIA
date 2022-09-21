@@ -7,9 +7,7 @@ import { useNavigate } from "react-router-dom";
 import Footer from "../components/Footer";
 
 const Login = () => {
-  /*const selectOption = (data) => {
-   
-  };*/
+  const selectOption = () => {};
 
   const navigate = useNavigate();
   useEffect(() => {

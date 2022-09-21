@@ -2,7 +2,7 @@ import logo from "../assets/logo.png";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
-const Header = () => {
+const Header = (props) => {
   const navigate = useNavigate();
   const logout = () => {
     localStorage.clear();
@@ -20,6 +20,7 @@ const Header = () => {
         <a href="/">
           <img src={logo} alt="Logo Groupomania" />
         </a>
+        <p>UserName</p>
         {localStorage.token && <button onClick={logout}>Logout</button>}
       </header>
     </>
