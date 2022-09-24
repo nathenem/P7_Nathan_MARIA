@@ -23,17 +23,17 @@ const LoginForm = () => {
 
   return (
     <>
-      <form className="forefront" onSubmit={handleSubmit(loginSubmit)}>
-        <p>Login</p>
-        <div>
-          <label>Email</label>
+      <form className="login_form" onSubmit={handleSubmit(loginSubmit)}>
+        <h1>S'identifier</h1>
+        <div className="login_input">
+          <label>Adresse mail :</label>
           <input type="email" {...register("email")} />
         </div>
-        <div>
-          <label>Password</label>
+        <div className="login_input">
+          <label>Mot de passe :</label>
           <input type="password" {...register("password")} />
         </div>
-        <button>Login</button>
+        <button>Je valide</button>
       </form>
     </>
   );

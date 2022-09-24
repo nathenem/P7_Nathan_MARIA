@@ -16,6 +16,7 @@ const Home = () => {
   useEffect(() => {
     if (!localStorage.token) {
       navigate("/login");
+      return;
     }
 
     axios

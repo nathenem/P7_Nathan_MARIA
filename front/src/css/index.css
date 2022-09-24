@@ -1,0 +1,210 @@
+@import url("https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700;900&display=swap");
+body {
+  margin: 0 auto;
+  max-width: 1300px;
+  font-family: "Lato";
+}
+
+#root {
+  margin: 0 auto;
+  max-width: 1300px;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+}
+
+.header {
+  display: flex;
+  flex-flow: row nowrap;
+  background-color: rgba(253, 43, 1, 0.5176470588);
+  justify-content: space-between;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  box-shadow: 0px 1px 3px 0px rgba(129, 129, 129, 0.334);
+}
+
+.logo {
+  width: 350px;
+  height: 130px;
+  object-fit: cover;
+}
+.logo img {
+  margin-left: 25px;
+}
+
+.header_features {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 15px;
+}
+
+.user_name {
+  width: auto;
+  height: 100%;
+  white-space: nowrap;
+  color: white;
+  font-size: 17px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+}
+
+.logout_button {
+  width: auto;
+  height: 100%;
+  border: 0;
+  background-color: rgba(0, 0, 0, 0);
+  font-size: 17px;
+  font-weight: 600;
+  font-family: "Lato";
+  text-align: center;
+  color: #fff;
+}
+
+.header_button :hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+.header_button :active {
+  background-color: rgba(255, 255, 255, 0.4);
+}
+
+.login_main {
+  width: 100%;
+  height: 675px;
+}
+
+.select_option {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: center;
+  gap: 50px;
+}
+
+.select_button {
+  width: 200px;
+  height: 100px;
+  border: 0;
+  border-radius: 10px;
+  background-color: rgba(253, 43, 1, 0.5176470588);
+  font-size: 30px;
+  font-weight: 600;
+  font-family: "Lato";
+  text-align: center;
+  color: #fff;
+  box-shadow: 0px 1px 3px 0px rgba(129, 129, 129, 0.334);
+}
+
+.select_button:hover {
+  background-color: rgba(253, 43, 1, 0.3803921569);
+}
+
+.return_button {
+  white-space: nowrap;
+  margin-left: 15px;
+  width: 100px;
+  height: 50px;
+  border: 0;
+  background-color: rgba(255, 255, 255, 0);
+  font-size: 20px;
+  font-weight: 500;
+  font-family: "Lato";
+  text-align: center;
+  color: black;
+}
+
+.return_button:hover {
+  color: gray;
+}
+
+.login_form {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+}
+.login_form button {
+  width: 150px;
+  height: 45px;
+  border: 0;
+  border-radius: 10px;
+  background-color: rgba(253, 43, 1, 0.5176470588);
+  font-size: 23px;
+  font-weight: 600;
+  font-family: "Lato";
+  text-align: center;
+  color: #fff;
+  margin-top: 15px;
+  box-shadow: 0px 1px 3px 0px rgba(129, 129, 129, 0.334);
+}
+
+.login_input {
+  width: 500px;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  font-size: 23px;
+}
+.login_input input {
+  border: 2px solid rgba(253, 43, 1, 0.3803921569);
+  background-color: rgba(255, 215, 215, 0.4901960784);
+  width: 200px;
+  font-size: 23px;
+}
+
+footer {
+  width: 1300px;
+}
+
+.footer_main {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.logo_footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 300px;
+  height: 130px;
+  object-fit: cover;
+}
+.logo_footer img {
+  width: 100%;
+}
+
+.footer_list {
+  width: 50%;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  align-items: center;
+}
+.footer_list button {
+  width: 150px;
+  height: 45px;
+  border: 0;
+  border-radius: 10px;
+  background-color: rgba(253, 43, 1, 0.5176470588);
+  font-size: 15px;
+  font-weight: 600;
+  font-family: "Lato";
+  text-align: center;
+  color: #fff;
+  box-shadow: 0px 1px 3px 0px rgba(129, 129, 129, 0.334);
+}
+.footer_list li {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 450px;
+}
+
+/*# sourceMappingURL=index.css.map */

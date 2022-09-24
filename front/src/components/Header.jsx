@@ -1,4 +1,4 @@
-import logo from "../assets/logo.png";
+import logo from "../assets/logo-white.png";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -12,17 +12,24 @@ const Header = (props) => {
 
   useEffect(() => {
     if (localStorage.token) {
+      navigate("/");
     }
   }, []);
 
   return (
     <>
-      <header className="background">
-        <a href="/">
-          <img src={logo} alt="Logo Groupomania" />
+      <header className="header">
+        <a className="logo header_button" href="/">
+          <img className="logo" src={logo} alt="Logo Groupomania" />
         </a>
-        {props.user && <p>{props.user.userName}</p>}
-        {localStorage.token && <button onClick={logout}>Logout</button>}
+        <div className="header_features header_button">
+          {props.user && <p className="user_name">@{props.user.userName}</p>}
+          {localStorage.token && (
+            <button className="logout_button" onClick={logout}>
+              Déconnexion
+            </button>
+          )}
+        </div>
       </header>
     </>
   );
