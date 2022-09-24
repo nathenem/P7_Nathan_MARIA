@@ -7,8 +7,11 @@ const NewPostForm = () => {
   const { register, handleSubmit } = useForm();
 
   const sendNewPost = (data) => {
+    const formData = new FormData();
+    formData.append("textContent", data.textContent);
+    formData.append("image", data.file[0]);
     axios
-      .post("http://localhost:3000/api/posts", data)
+      .post("http://localhost:3000/api/posts", formData)
       .then((res) => {
         console.log(res);
         navigate(0);
@@ -30,11 +33,7 @@ const NewPostForm = () => {
         </div>
         <div>
           <label>Image</label>
-          <input
-            type="file"
-            accept="image/*"
-            {...register("file.filename", "file")}
-          />
+          <input type="file" accept="image/*" {...register("file")} />
         </div>
         <button>Send new post</button>
       </form>

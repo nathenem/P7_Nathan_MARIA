@@ -25,14 +25,14 @@ exports.getOne = (req, res) => {
 exports.create = (req, res) => {
   User.findById(req.auth.userId)
     .then((user) => {
-      if (1) {
+      if (req.body && req.file) {
         console.log("fichier");
         const post = new Post({
           ...req.body,
           author: user.userName,
           authorId: user._id,
           imageUrl: `${req.protocol}://${req.get("host")}/images/${
-            req.body.file.filename
+            req.file.filename
           }`,
         });
 
@@ -46,7 +46,8 @@ exports.create = (req, res) => {
           console.log("pas fichier");
           const post = new Post({
             ...req.body,
-            author: userName,
+            author: user.userName,
+            authorId: user._id,
           });
 
           post.save().catch((err) => {
@@ -71,11 +72,11 @@ exports.modify = (req, res) => {
   console.log(req.body);
   Post.findById(req.params.id)
     .then((post) => {
-      if (req.auth.userId !== post.authorId) {
+      if (req.auth.userId !== post.authorId && !req.auth.isAdmin) {
         return res.status(401).json();
       }
       if (req.file) {
-        const postBody = JSON.parse(req.body.post);
+        const postBody = req.body;
 
         Post.findByIdAndUpdate(req.params.id, {
           ...postBody,
@@ -90,7 +91,7 @@ exports.modify = (req, res) => {
             res.status(500);
           });
       } else {
-        const postAlone = req.body.post;
+        const postAlone = req.body;
         Post.findByIdAndUpdate(req.params.id, {
           ...postAlone,
         })
@@ -111,12 +112,10 @@ exports.modify = (req, res) => {
 // DELETE delete
 exports.delete = (req, res) => {
   Post.findById(req.params.id).then((post) => {
-    if (req.auth.userId !== post.authorId) {
-      return res
-        .status(401)
-        .json({
-          message: "Vous ne pouvez pas supprimer le post de quelqu'un d'autre.",
-        });
+    if (req.auth.userId !== post.authorId && !req.auth.isAdmin) {
+      return res.status(401).json({
+        message: "Vous ne pouvez pas supprimer le post de quelqu'un d'autre.",
+      });
     }
     Post.findByIdAndDelete(req.params.id).then(
       res.status(200).json({ message: "Le post a bien été supprimé." })
@@ -126,71 +125,120 @@ exports.delete = (req, res) => {
 
 // PUT likeOrDislike
 exports.likeOrDislike = (req, res) => {
+  console.log(req.body);
+
   const userId = req.body.userId;
   Post.findById(req.params.id).then((post) => {
-    if (req.body.like > 0) {
+    console.log("post trouvé");
+
+    //like sans précédent
+    if (
+      req.body.like > 0 &&
+      !post.usersLiked.includes(userId) &&
+      !post.usersDisliked.includes(userId)
+    ) {
+      console.log("ajout like");
       Post.updateOne(
         { _id: req.params.id },
         {
           $push: { usersLiked: userId },
-          $pull: { usersDisliked: userId },
-          $inc: { likes: 1 },
         }
       )
         .then(() => {
-          res.status(200).json({ message: "Like" });
+          res.status(200).json({ message: "Like ajouté" });
         })
         .catch(() => {
           res.status(500);
         });
     }
-    if (req.body.like < 0) {
+    //dislike sans précédent
+    if (
+      req.body.like < 0 &&
+      !post.usersDisliked.includes(userId) &&
+      !post.usersLiked.includes(userId)
+    ) {
+      console.log("ajout dislike");
+      Post.updateOne(
+        { _id: req.params.id },
+        {
+          $push: { usersDisliked: userId },
+        }
+      )
+        .then(() => {
+          res.status(200).json({ message: "Dislike ajouté" });
+        })
+        .catch(() => {
+          res.status(500);
+        });
+    }
+    //like précédent
+    // nouveau like
+    if (req.body.like > 0 && post.usersLiked.includes(userId)) {
+      console.log("retrait like");
+      Post.updateOne(
+        { _id: req.params.id },
+        {
+          $pull: { usersLiked: userId },
+        }
+      )
+        .then(() => {
+          res.status(200).json({ message: "Like retiré" });
+        })
+        .catch(() => {
+          res.status(500);
+        });
+    }
+    //dislike avec like précédent
+    if (req.body.like < 0 && post.usersLiked.includes(userId)) {
+      console.log("ajout dislike + retrait like");
       Post.updateOne(
         { _id: req.params.id },
         {
           $pull: { usersLiked: userId },
           $push: { usersDisliked: userId },
-          $inc: { dislikes: 1 },
         }
       )
         .then(() => {
-          res.status(200).json({ message: "Dislike" });
+          res.status(200).json({ message: "Like retiré et Dislike ajouté" });
         })
         .catch(() => {
           res.status(500);
         });
     }
-    if (req.body.like === 0) {
-      if (post.usersLiked.includes(userId)) {
-        Post.updateOne(
-          { _id: req.params.id },
-          {
-            $pull: { usersLiked: userId },
-            $inc: { likes: -1 },
-          }
-        )
-          .then(() => {
-            res.status(200).json({ message: "Like retiré" });
-          })
-          .catch(() => {
-            res.status(500);
-          });
-      }
-      if (post.usersDisliked.includes(userId)) {
-        Post.updateOne(
-          { _id: req.params.id },
-          {
-            $pull: { usersDisliked: userId },
-            $inc: { dislikes: -1 },
-          }
-        )
-          .then(() => {
-            res.status(200).json({ message: "Dislike retiré" });
-          })
-          .catch(() => {
-            res.status(500);
-          });
-      }
+
+    // dislike précédent
+    //nouveau dislike
+    if (req.body.like < 0 && post.usersDisliked.includes(userId)) {
+      console.log("retrait dislike");
+      Post.updateOne(
+        { _id: req.params.id },
+        {
+          $pull: { usersDisliked: userId },
+        }
+      )
+        .then(() => {
+          res.status(200).json({ message: "Dislike retiré" });
+        })
+        .catch(() => {
+          res.status(500);
+        });
+    }
+    //like avec dislike précédent
+    if (req.body.like > 0 && post.usersDisliked.includes(userId)) {
+      console.log("retrait dislike + ajout like");
+      Post.updateOne(
+        { _id: req.params.id },
+        {
+          $push: { usersLiked: userId },
+          $pull: { usersDisliked: userId },
+        }
+      )
+        .then(() => {
+          res.status(200).json({ message: "Disike retiré et like ajouté" });
+        })
+        .catch(() => {
+          res.status(500);
+        });
     }
   });
 };

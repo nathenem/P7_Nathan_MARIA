@@ -2,13 +2,16 @@ import { useForm } from "react-hook-form";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
-const ModifyForm = () => {
+const ModifyForm = (props) => {
   const navigate = useNavigate();
   const { register, handleSubmit } = useForm();
 
   const modifyPost = (data) => {
+    const formData = new FormData();
+    formData.append("textContent", data.textContent);
+    formData.append("image", data.file[0]);
     axios
-      .post("http://localhost:3000/api/posts", data)
+      .put(`http://localhost:3000/api/posts/${props.post._id}`, formData)
       .then((res) => {
         console.log(res);
         navigate(0);
@@ -30,11 +33,7 @@ const ModifyForm = () => {
         </div>
         <div>
           <label>Image</label>
-          <input
-            type="file"
-            accept="image/*"
-            {...register("file.filename", "file")}
-          />
+          <input type="file" accept="image/*" {...register("file")} />
         </div>
         <button>Commit changes</button>
       </form>

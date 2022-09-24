@@ -3,6 +3,7 @@ const express = require("express");
 const router = express.Router();
 
 const rateLimit = require("express-rate-limit");
+const auth = require("../../middleware/auth");
 
 const apiLimiter = rateLimit({
   windowMs: 15 * 60 * 1000, // 15 minutes
@@ -19,5 +20,11 @@ router.post("/signup", userController.signup);
 
 // POST login
 router.post("/login", apiLimiter, userController.login);
+
+// GET getOne
+router.get("/profile", auth, userController.getOne);
+
+// DELETE deleteAccount
+router.delete("/:id", auth, userController.deleteAccount);
 
 module.exports = router;

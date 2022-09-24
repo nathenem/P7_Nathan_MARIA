@@ -9,12 +9,24 @@ import Footer from "../components/Footer.jsx";
 
 const Home = () => {
   const [posts, setPosts] = useState([]);
+  const [user, setUser] = useState();
+  const [newPost, setNewPost] = useState(false);
 
   const navigate = useNavigate();
   useEffect(() => {
     if (!localStorage.token) {
       navigate("/login");
     }
+
+    axios
+      .get("http://localhost:3000/api/auth/profile")
+      .then((res) => {
+        setUser(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+        alert(err.response.data.message);
+      });
 
     axios
       .get("http://localhost:3000/api/posts")
@@ -27,21 +39,21 @@ const Home = () => {
       });
   }, []);
 
-  const newPost = () => {}; //display NewPostForm ==> TODO
+  const displayNewPost = () => {
+    setNewPost(!newPost);
+  };
 
   return (
     <>
-      <Header />
+      <Header user={user} />
       <main className="background">
-        {posts.map((post) => {
-          return <Post post={post} />;
+        {posts.map((post, index) => {
+          return <Post key={`${post}-${index}`} post={post} user={user} />;
         })}
-        <button onClick={newPost}>+</button> {/*New Post Button*/}
+        <button onClick={displayNewPost}>+</button> {/*New Post Button*/}
       </main>
-      <main>
-        <NewPostForm />
-      </main>
-      <Footer />
+      {newPost && <NewPostForm />}
+      <Footer user={user} />
     </>
   );
 };

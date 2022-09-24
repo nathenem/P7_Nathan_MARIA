@@ -63,9 +63,13 @@ exports.login = (req, res) => {
           if (result) {
             return res.status(200).json({
               userId: user._id,
-              token: jwt.sign({ userId: user._id }, process.env.TOKEN_SECRET, {
-                expiresIn: "24h",
-              }),
+              token: jwt.sign(
+                { isAdmin: user.isAdmin, userId: user._id },
+                process.env.TOKEN_SECRET,
+                {
+                  expiresIn: "24h",
+                }
+              ),
             });
           } else {
             res.status(401).send("Login incorrect.");
@@ -76,4 +80,29 @@ exports.login = (req, res) => {
         res.status(400).send("Utilisateur introuvable.");
       });
   }
+};
+
+// GET getOne
+exports.getOne = (req, res) => {
+  User.findById(req.auth.userId).then((item) => {
+    if (item === null) {
+      return res.status(404).json({ erreur: "élément introuvable" }); //message d'erreur si élément introuvable
+    } else {
+      res.json(item);
+    }
+  });
+};
+
+// DELETE deleteAccount
+exports.deleteAccount = (req, res) => {
+  User.findById(req.params.id).then((user) => {
+    if (req.auth.userId !== req.params.id && !req.auth.isAdmin) {
+      return res.status(401).json({
+        message: "Vous ne pouvez pas supprimer le compte de quelqu'un d'autre.",
+      });
+    }
+    User.findByIdAndDelete(req.params.id).then(
+      res.status(200).json({ message: "Le compte a bien été supprimé." })
+    );
+  });
 };

@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 
 const Header = (props) => {
   const navigate = useNavigate();
+
   const logout = () => {
     localStorage.clear();
     navigate("/login");
@@ -20,7 +21,7 @@ const Header = (props) => {
         <a href="/">
           <img src={logo} alt="Logo Groupomania" />
         </a>
-        <p>UserName</p>
+        {props.user && <p>{props.user.userName}</p>}
         {localStorage.token && <button onClick={logout}>Logout</button>}
       </header>
     </>
