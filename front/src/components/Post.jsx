@@ -44,32 +44,43 @@ const Post = (props) => {
   return (
     <>
       {props.user && (
-        <div className="forefront">
-          <p className="author">@{props.post.author}</p>
-          <p className="text">"{props.post.textContent}"</p>
-          {props.post.imageUrl && (
-            <p className="image">
-              <img src={props.post.imageUrl} alt={""} />
-            </p>
-          )}
-          <p className="date">{props.post.date}</p>
-          {(props.user.isAdmin || props.post.authorId === props.user._id) && (
-            <button classeName="modifybutton" onClick={modifyPost}>
-              Modify
-            </button>
-          )}
-          {(props.user.isAdmin || props.post.authorId === props.user._id) && (
-            <button classeName="deletebutton" onClick={deletePost}>
-              Delete
-            </button>
-          )}
+        <div className="post">
+          <div className="post_body">
+            <p className="author">@{props.post.author}</p>
+            <p className="text">&#62; {props.post.textContent}</p>
+            {props.post.imageUrl && (
+              <p className="image">
+                <img src={props.post.imageUrl} alt={""} />
+              </p>
+            )}
+            {/*<p className="date">{props.post.date}</p>*/}
+
+            <div className="post_button">
+              <div className="manage_button">
+                {(props.user.isAdmin ||
+                  props.post.authorId === props.user._id) && (
+                  <button classeName="modifybutton" onClick={modifyPost}>
+                    Modify
+                  </button>
+                )}
+                {(props.user.isAdmin ||
+                  props.post.authorId === props.user._id) && (
+                  <button classeName="deletebutton" onClick={deletePost}>
+                    Delete
+                  </button>
+                )}
+              </div>
+              <div className="like_button">
+                <button onClick={() => likePost(1)}>Like</button>
+                <p className="green">{props.post.usersLiked.length}</p>
+                <button onClick={() => likePost(-1)}>Dislike</button>
+                <p className="red">{props.post.usersDisliked.length}</p>
+              </div>
+            </div>
+          </div>
+          {modify && <ModifyForm post={props.post} />}
         </div>
       )}
-      {modify && <ModifyForm post={props.post} />}
-      <button onClick={() => likePost(1)}>Like</button>
-      <p>Likes : {props.post.usersLiked.length}</p>
-      <button onClick={() => likePost(-1)}>Dislike</button>
-      <p>Disikes : {props.post.usersDisliked.length}</p>
     </>
   );
 };

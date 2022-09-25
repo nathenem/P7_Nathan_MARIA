@@ -1,26 +1,60 @@
 @import url("https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700;900&display=swap");
 body {
   margin: 0 auto;
-  max-width: 1300px;
   font-family: "Lato";
+  background-color: rgba(242, 242, 242, 0.669);
 }
 
 #root {
   margin: 0 auto;
-  max-width: 1300px;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+}
+
+#main_home {
+  margin-top: -90px;
   display: flex;
   flex-flow: column nowrap;
   justify-content: center;
 }
 
-.header {
-  display: flex;
-  flex-flow: row nowrap;
-  background-color: rgba(253, 43, 1, 0.5176470588);
-  justify-content: space-between;
+.login_main {
+  margin: 0 auto;
+  width: 1300px;
+  height: 670px;
+  background-color: rgba(255, 255, 255, 0.27);
+}
+.login_main img {
+  width: 1300px;
+  height: 680px;
+  object-fit: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  position: absolute;
+  top: 120px;
+  z-index: -1;
+}
+
+#header_wrapper {
+  margin: 0 auto;
+  width: 100%;
+  background-color: #fd2b01;
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;
-  box-shadow: 0px 1px 3px 0px rgba(129, 129, 129, 0.334);
+  z-index: 1;
+}
+
+#header {
+  margin: 0 auto;
+  width: 1300px;
+  display: flex;
+  flex-flow: row nowrap;
+  background-color: #fd2b01;
+  justify-content: space-between;
+  z-index: 2;
 }
 
 .logo {
@@ -70,11 +104,6 @@ body {
   background-color: rgba(255, 255, 255, 0.4);
 }
 
-.login_main {
-  width: 100%;
-  height: 675px;
-}
-
 .select_option {
   width: 100%;
   height: 100%;
@@ -83,6 +112,7 @@ body {
   justify-content: center;
   align-items: center;
   gap: 50px;
+  z-index: 1;
 }
 
 .select_button {
@@ -90,7 +120,7 @@ body {
   height: 100px;
   border: 0;
   border-radius: 10px;
-  background-color: rgba(253, 43, 1, 0.5176470588);
+  background-color: #fd2b01;
   font-size: 30px;
   font-weight: 600;
   font-family: "Lato";
@@ -100,12 +130,12 @@ body {
 }
 
 .select_button:hover {
-  background-color: rgba(253, 43, 1, 0.3803921569);
+  background-color: rgba(253, 43, 1, 0.7607843137);
 }
 
 .return_button {
   white-space: nowrap;
-  margin-left: 15px;
+  margin-left: 20px;
   width: 100px;
   height: 50px;
   border: 0;
@@ -114,11 +144,10 @@ body {
   font-weight: 500;
   font-family: "Lato";
   text-align: center;
-  color: black;
 }
 
 .return_button:hover {
-  color: gray;
+  color: rgba(255, 255, 255, 0.756);
 }
 
 .login_form {
@@ -133,14 +162,17 @@ body {
   height: 45px;
   border: 0;
   border-radius: 10px;
-  background-color: rgba(253, 43, 1, 0.5176470588);
+  background-color: #fd2b01;
   font-size: 23px;
   font-weight: 600;
   font-family: "Lato";
   text-align: center;
-  color: #fff;
+  color: rgb(255, 255, 255);
   margin-top: 15px;
   box-shadow: 0px 1px 3px 0px rgba(129, 129, 129, 0.334);
+}
+.login_form button:hover {
+  background-color: rgba(253, 43, 1, 0.6745098039);
 }
 
 .login_input {
@@ -151,17 +183,21 @@ body {
   font-size: 23px;
 }
 .login_input input {
-  border: 2px solid rgba(253, 43, 1, 0.3803921569);
-  background-color: rgba(255, 215, 215, 0.4901960784);
+  border: 2px solid #fd2b01;
+  background-color: rgba(255, 255, 255, 0.7647058824);
   width: 200px;
   font-size: 23px;
 }
 
-footer {
-  width: 1300px;
+#footer_wrapper {
+  margin: 0 auto;
+  width: 100%;
+  background-color: #ffd7d7;
 }
 
-.footer_main {
+#footer_main {
+  margin: 0 auto;
+  width: 1300px;
   display: flex;
   flex-flow: row nowrap;
   justify-content: space-around;
@@ -192,7 +228,7 @@ footer {
   height: 45px;
   border: 0;
   border-radius: 10px;
-  background-color: rgba(253, 43, 1, 0.5176470588);
+  background-color: #fd2b01;
   font-size: 15px;
   font-weight: 600;
   font-family: "Lato";
@@ -205,6 +241,153 @@ footer {
   overflow: hidden;
   text-overflow: ellipsis;
   width: 450px;
+}
+.footer_list button:hover {
+  background-color: rgba(253, 43, 1, 0.8039215686);
+}
+
+.new_post {
+  width: 1200px;
+  margin: 50px 0;
+}
+.new_post button {
+  position: fixed;
+  bottom: 95px;
+  right: 95px;
+  width: 75px;
+  height: 75px;
+  border: 0;
+  border-radius: 50%;
+  background-color: #fd2b01;
+  font-size: 23px;
+  font-weight: 600;
+  font-family: "Lato";
+  text-align: center;
+  color: #fff;
+  margin-top: 15px;
+  box-shadow: 0px 1px 3px 0px rgba(129, 129, 129, 0.334);
+}
+.new_post button:hover {
+  background-color: rgba(253, 43, 1, 0.7529411765);
+}
+
+#post_form {
+  width: 100%;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+}
+#post_form button {
+  width: 150px;
+  height: 45px;
+  border: 0;
+  border-radius: 10px;
+  background-color: #fd2b01;
+  font-size: 20px;
+  font-weight: 600;
+  font-family: "Lato";
+  text-align: center;
+  color: #fff;
+  margin-top: 15px;
+  box-shadow: 0px 1px 3px 0px rgba(129, 129, 129, 0.334);
+}
+#post_form button:hover {
+  background-color: rgba(253, 43, 1, 0.7529411765);
+}
+
+.post_input {
+  width: 100%;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  font-size: 23px;
+}
+.post_input textarea {
+  border: 2px solid #fd2b01;
+  background-color: #ffd7d7;
+  width: 500px;
+  font-size: 23px;
+  border-radius: 15px;
+  width: 600px;
+  resize: none;
+}
+.post_input input {
+  border: 2px solid #fd2b01;
+  background-color: #ffd7d7;
+  width: 500px;
+  font-size: 15px;
+  border-radius: 15px;
+  width: 270px;
+}
+
+#post_wrapper {
+  width: 100%;
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+}
+
+.post {
+  width: 95%;
+  display: flex;
+  flex-flow: column nowrap;
+  border: 2px solid #4e5166;
+  background-color: rgba(78, 81, 102, 0.0784313725);
+  margin-bottom: 10px;
+}
+
+.post_body {
+  display: flex;
+  flex-flow: column nowrap;
+}
+.post_body .image {
+  max-width: 95%;
+  align-self: center;
+}
+.post_body .image img {
+  max-width: 100%;
+}
+
+.author {
+  margin: 15px 0 0 15px;
+  font-size: 22px;
+  font-weight: 500;
+}
+
+.text {
+  margin-left: 15px;
+  font-size: 22px;
+  font-weight: 500;
+}
+
+.post_button {
+  margin-left: 15px;
+  margin-bottom: 15px;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  gap: 15px;
+}
+
+.manage_button {
+  display: flex;
+  flex-flow: row nowrap;
+  gap: 15px;
+}
+
+.like_button {
+  margin-right: 15px;
+  display: flex;
+  flex-flow: row nowrap;
+  gap: 15px;
+}
+.like_button .green {
+  color: green;
+}
+.like_button .red {
+  color: red;
 }
 
 /*# sourceMappingURL=index.css.map */

@@ -47,13 +47,22 @@ const Home = () => {
   return (
     <>
       <Header user={user} />
-      <main className="background">
-        {posts.map((post, index) => {
-          return <Post key={`${post}-${index}`} post={post} user={user} />;
-        })}
-        <button onClick={displayNewPost}>+</button> {/*New Post Button*/}
+      <main id="main_home">
+        <div className="new_post">
+          {!newPost && (
+            <button href={"#post_form"} onClick={displayNewPost}>
+              +
+            </button>
+          )}
+          {newPost && <button onClick={displayNewPost}>-</button>}
+        </div>
+        {newPost && <NewPostForm />}
+        <div id="post_wrapper">
+          {posts.map((post, index) => {
+            return <Post key={`${post}-${index}`} post={post} user={user} />;
+          })}
+        </div>
       </main>
-      {newPost && <NewPostForm />}
       <Footer user={user} />
     </>
   );

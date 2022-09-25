@@ -27,15 +27,32 @@ const SignupForm = () => {
         <h1>S'inscrire</h1>
         <div className="login_input">
           <label>Nom d'utilisateur :</label>
-          <input type="text" {...register("userName")} />
+          <input
+            maxLength={32}
+            minLength={3}
+            placeholder="pseudonyme"
+            type="text"
+            {...register("userName")}
+          />
         </div>
         <div className="login_input">
           <label>Adresse mail :</label>
-          <input type="email" {...register("email")} />
+          <input
+            maxLength={32}
+            minLength={3}
+            placeholder="xyz@mail.fr"
+            type="email"
+            {...register("email")}
+          />
         </div>
         <div className="login_input">
           <label>Mot de passe :</label>
-          <input type="password" {...register("password")} />
+          <input
+            maxLength={100}
+            minLength={8}
+            type="password"
+            {...register("password")}
+          />
         </div>
         <button>Je valide</button>
       </form>

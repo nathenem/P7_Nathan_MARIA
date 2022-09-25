@@ -5,6 +5,7 @@ import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Footer from "../components/Footer";
 import { useState } from "react";
+import office from "../assets/office.jpg";
 
 const Login = () => {
   const [option, setOption] = useState();
@@ -67,6 +68,7 @@ const Login = () => {
             <SignupForm />
           </>
         )}
+        <img src={office} />
       </main>
       <Footer />
     </>

@@ -1,4 +1,4 @@
-import logo from "../assets/logo.png";
+import logo from "../assets/groupomania-black.png";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
@@ -20,33 +20,35 @@ const Footer = (props) => {
 
   return (
     <>
-      <footer className="footer_main">
-        <a className="logo_footer" href="/">
-          <img src={logo} alt="Logo Groupomania" />
-        </a>
-        <div className="footer_list">
-          <ul>
-            <li>Bienvenue sur le réseau intranet Groupomania.</li>
-            {!localStorage.token && (
-              <>
-                <li>Veuillez vous identifier pour accéder aux posts.</li>
-                <li>
-                  Si vous n'avez pas de compte, inscrivez-vous simplement ici.
-                </li>
-              </>
-            )}
+      <div id="footer_wrapper">
+        <footer id="footer_main">
+          <a className="logo_footer" href="/">
+            <img src={logo} alt="Logo Groupomania" />
+          </a>
+          <div className="footer_list">
+            <ul>
+              <li>Bienvenue sur le réseau intranet Groupomania.</li>
+              {!localStorage.token && (
+                <>
+                  <li>Veuillez vous identifier pour accéder aux posts.</li>
+                  <li>
+                    Si vous n'avez pas de compte, inscrivez-vous simplement ici.
+                  </li>
+                </>
+              )}
+              {localStorage.token && (
+                <>
+                  <li>Pour créer un nouveau post, cliquez sur le bouton "+"</li>
+                  <li>Vous pouvez ajouter des images à vos posts.</li>
+                </>
+              )}
+            </ul>
             {localStorage.token && (
-              <>
-                <li>Pour créer un nouveau post, cliquez sur le bouton "+"</li>
-                <li>Vous pouvez ajouter des images à vos posts.</li>
-              </>
+              <button onClick={deleteAccount}>Supprimer mon compte</button>
             )}
-          </ul>
-          {localStorage.token && (
-            <button onClick={deleteAccount}>Supprimer mon compte</button>
-          )}
-        </div>
-      </footer>
+          </div>
+        </footer>
+      </div>
     </>
   );
 };

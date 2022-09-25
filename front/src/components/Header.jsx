@@ -17,8 +17,8 @@ const Header = (props) => {
   }, []);
 
   return (
-    <>
-      <header className="header">
+    <div id="header_wrapper">
+      <header id="header">
         <a className="logo header_button" href="/">
           <img className="logo" src={logo} alt="Logo Groupomania" />
         </a>
@@ -31,7 +31,7 @@ const Header = (props) => {
           )}
         </div>
       </header>
-    </>
+    </div>
   );
 };
 

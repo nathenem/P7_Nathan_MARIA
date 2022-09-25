@@ -27,11 +27,22 @@ const LoginForm = () => {
         <h1>S'identifier</h1>
         <div className="login_input">
           <label>Adresse mail :</label>
-          <input type="email" {...register("email")} />
+          <input
+            maxLength={32}
+            minLength={6}
+            placeholder="xyz@mail.fr"
+            type="email"
+            {...register("email")}
+          />
         </div>
         <div className="login_input">
           <label>Mot de passe :</label>
-          <input type="password" {...register("password")} />
+          <input
+            maxLength={100}
+            minLength={8}
+            type="password"
+            {...register("password")}
+          />
         </div>
         <button>Je valide</button>
       </form>

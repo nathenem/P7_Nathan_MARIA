@@ -25,17 +25,23 @@ const NewPostForm = () => {
 
   return (
     <>
-      <form className="forefront" onSubmit={handleSubmit(sendNewPost)}>
-        <p>New post</p>
-        <div>
-          <label>Text Content</label>
-          <input type="Text" {...register("textContent")} />
+      <form id="post_form" onSubmit={handleSubmit(sendNewPost)}>
+        <div className="post_input">
+          <label>&#0;</label>
+          <textarea
+            rows={7}
+            maxLength={240}
+            minLength={1}
+            autoComplete={"off"}
+            placeholder="Que souhaitez-vous dire ?"
+            {...register("textContent")}
+          />
         </div>
-        <div>
-          <label>Image</label>
+        <div className="post_input">
+          <label>&#0;</label>
           <input type="file" accept="image/*" {...register("file")} />
         </div>
-        <button>Send new post</button>
+        <button>Envoyer</button>
       </form>
     </>
   );
