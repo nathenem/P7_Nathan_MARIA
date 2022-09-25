@@ -1,3 +1,7 @@
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   margin: 0 auto;
   font-family: "Lato";
@@ -13,10 +17,11 @@ body {
 }
 
 #main_home {
+  min-height: 82vh;
   margin-top: -90px;
   display: flex;
   flex-flow: column nowrap;
-  justify-content: center;
+  justify-content: flex-start;
 }
 
 .login_main {

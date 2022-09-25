@@ -1,7 +1,9 @@
 #footer_wrapper {
+  justify-self: flex-end;
   margin: 0 auto;
   width: 100%;
   background-color: #ffd7d7;
+  z-index: 0;
 }
 
 #footer_main {

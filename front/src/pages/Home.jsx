@@ -13,6 +13,7 @@ const Home = () => {
   const [newPost, setNewPost] = useState(false);
 
   const navigate = useNavigate();
+
   useEffect(() => {
     if (!localStorage.token) {
       navigate("/login");
@@ -42,6 +43,8 @@ const Home = () => {
 
   const displayNewPost = () => {
     setNewPost(!newPost);
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
   };
 
   return (
