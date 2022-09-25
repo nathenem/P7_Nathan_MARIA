@@ -1,0 +1,78 @@
+.new_post {
+  width: 1200px;
+  margin: 50px 0;
+  button {
+    position: fixed;
+    bottom: 95px;
+    right: 95px;
+    width: 75px;
+    height: 75px;
+    border: 0;
+    border-radius: 50%;
+    background-color: #fd2b01;
+    font-size: 23px;
+    font-weight: 600;
+    font-family: "Lato";
+    text-align: center;
+    color: #fff;
+    margin-top: 15px;
+    box-shadow: 0px 1px 3px 0px rgba(129, 129, 129, 0.334);
+  }
+  button:hover {
+    background-color: #fd2b01c0;
+  }
+}
+
+#post_form {
+  width: 100%;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+
+  button {
+    width: 150px;
+    height: 45px;
+    border: 0;
+    border-radius: 10px;
+    background-color: #fd2b01;
+    font-size: 20px;
+    font-weight: 600;
+    font-family: "Lato";
+    text-align: center;
+    color: #fff;
+    margin-top: 15px;
+    box-shadow: 0px 1px 3px 0px rgba(129, 129, 129, 0.334);
+  }
+  button:hover {
+    background-color: #fd2b01c0;
+  }
+}
+
+.post_input {
+  width: 100%;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  font-size: 23px;
+
+  textarea {
+    border: 2px solid #fd2b01;
+    background-color: #ffd7d7;
+    width: 500px;
+    font-size: 23px;
+    border-radius: 15px;
+    width: 600px;
+    resize: none;
+  }
+
+  input {
+    border: 2px solid #fd2b01;
+    background-color: #ffd7d7;
+    width: 500px;
+    font-size: 15px;
+    border-radius: 15px;
+    width: 270px;
+  }
+}
