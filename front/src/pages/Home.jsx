@@ -34,6 +34,7 @@ const Home = () => {
       .get("http://localhost:3000/api/posts")
       .then((res) => {
         setPosts(res.data);
+        sortPost();
       })
       .catch((err) => {
         console.log(err);
@@ -47,17 +48,30 @@ const Home = () => {
     document.documentElement.scrollTop = 0;
   };
 
+  const sortPost = () => {
+    posts
+      .sort((a, b) => {
+        return b.date - a.date;
+      })
+      .reverse();
+    console.log(posts);
+  };
+
   return (
     <>
       <Header user={user} />
       <main id="main_home">
         <div className="new_post">
           {!newPost && (
-            <button href={"#post_form"} onClick={displayNewPost}>
-              +
+            <button onClick={displayNewPost}>
+              <i className="fa-solid fa-feather-pointed"></i>
             </button>
           )}
-          {newPost && <button onClick={displayNewPost}>-</button>}
+          {newPost && (
+            <button onClick={displayNewPost}>
+              <i className="fa-solid fa-xmark"></i>
+            </button>
+          )}
         </div>
         {newPost && <NewPostForm />}
         <div id="post_wrapper">

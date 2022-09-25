@@ -24,12 +24,20 @@ const Header = (props) => {
         </a>
         <div className="header_features header_button">
           {props.user && <p className="user_name">@{props.user.userName}</p>}
+
           {localStorage.token && (
             <button className="logout_button" onClick={logout}>
-              Déconnexion
+              <i className="fa-solid fa-right-from-bracket"></i> Déconnexion
             </button>
           )}
         </div>
+        {!localStorage.token && (
+          <div id="demo">
+            <p>Identifiants de démo :</p>
+            <p>admin@mail.com</p>
+            <p>1aAbBcCdD</p>
+          </div>
+        )}
       </header>
     </div>
   );

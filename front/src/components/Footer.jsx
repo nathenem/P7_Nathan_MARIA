@@ -30,7 +30,7 @@ const Footer = (props) => {
               <li>Bienvenue sur le réseau intranet Groupomania.</li>
               {!localStorage.token && (
                 <>
-                  <li>Veuillez vous identifier pour accéder aux posts.</li>
+                  <li>Veuillez vous identifier pour accéder au site.</li>
                   <li>
                     Si vous n'avez pas de compte, inscrivez-vous simplement ici.
                   </li>
@@ -38,7 +38,10 @@ const Footer = (props) => {
               )}
               {localStorage.token && (
                 <>
-                  <li>Pour créer un nouveau post, cliquez sur le bouton "+"</li>
+                  <li>
+                    Pour créer un nouveau post, cliquez sur le bouton "
+                    <i className="fa-solid fa-feather-pointed"></i>"
+                  </li>
                   <li>Vous pouvez ajouter des images à vos posts.</li>
                 </>
               )}

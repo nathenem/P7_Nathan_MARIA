@@ -24,7 +24,7 @@
   }
 }
 
-#post_form {
+.post_form {
   margin: 25px 0;
   width: 100%;
   display: flex;
@@ -34,10 +34,10 @@
   gap: 15px;
 
   button {
-    width: 150px;
-    height: 45px;
+    width: 40px;
+    height: 40px;
     border: 0;
-    border-radius: 10px;
+    border-radius: 50%;
     background-color: #fd2b01;
     font-size: 20px;
     font-weight: 600;
@@ -57,11 +57,12 @@
   display: flex;
   flex-flow: row nowrap;
   justify-content: center;
+  align-items: center;
   font-size: 23px;
 
   textarea {
-    border: 2px solid #fd2b01;
-    background-color: #ffd7d7;
+    border: 2px solid #4e5166;
+    background-color: #4e516614;
     width: 500px;
     font-size: 23px;
     border-radius: 15px;
@@ -69,12 +70,32 @@
     resize: none;
   }
 
-  input {
-    border: 2px solid #fd2b01;
-    background-color: #ffd7d7;
-    width: 500px;
-    font-size: 15px;
-    border-radius: 15px;
-    width: 270px;
+  input[type="file"] {
+    display: none;
+  }
+
+  .custom-file-input {
+    margin-right: 15px;
+    width: 40px;
+    height: 40px;
+    border: 0;
+    border-radius: 50%;
+    background-color: #fd2b01;
+    font-size: 20px;
+    font-weight: 600;
+    font-family: "Lato";
+    text-align: center;
+    color: #fff;
+    margin-top: 15px;
+    box-shadow: 0px 1px 3px 0px rgba(129, 129, 129, 0.334);
+
+    .fa-paperclip {
+      position: relative;
+      top: 16%;
+    }
+  }
+
+  .custom-file-input:hover {
+    background-color: #fd2b01c0;
   }
 }

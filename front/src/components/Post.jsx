@@ -60,21 +60,26 @@ const Post = (props) => {
                 {(props.user.isAdmin ||
                   props.post.authorId === props.user._id) && (
                   <button classeName="modifybutton" onClick={modifyPost}>
-                    Modify
+                    <i class="fa-solid fa-pen like_text"></i>
                   </button>
                 )}
                 {(props.user.isAdmin ||
                   props.post.authorId === props.user._id) && (
                   <button classeName="deletebutton" onClick={deletePost}>
-                    Delete
+                    <i class="fa-solid fa-trash-can like_text"></i>
                   </button>
                 )}
               </div>
               <div className="like_button">
-                <button onClick={() => likePost(1)}>Like</button>
-                <p className="green">{props.post.usersLiked.length}</p>
-                <button onClick={() => likePost(-1)}>Dislike</button>
-                <p className="red">{props.post.usersDisliked.length}</p>
+                <button className="green" onClick={() => likePost(1)}>
+                  <i className="fa-solid fa-thumbs-up like_text"></i>
+                  {props.post.usersLiked.length}
+                </button>
+
+                <button className="red" onClick={() => likePost(-1)}>
+                  <i className="fa-solid fa-thumbs-down like_text"></i>{" "}
+                  {props.post.usersDisliked.length}
+                </button>
               </div>
             </div>
           </div>

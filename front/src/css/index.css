@@ -43,12 +43,16 @@ body {
   z-index: -1;
 }
 
+#demo {
+  font-size: 16px;
+  font-weight: 600;
+  color: white;
+}
+
 #header_wrapper {
   margin: 0 auto;
   width: 100%;
   background-color: #fd2b01;
-  border-bottom-left-radius: 10px;
-  border-bottom-right-radius: 10px;
   z-index: 1;
 }
 
@@ -279,7 +283,7 @@ body {
   background-color: rgba(253, 43, 1, 0.7529411765);
 }
 
-#post_form {
+.post_form {
   margin: 25px 0;
   width: 100%;
   display: flex;
@@ -288,11 +292,11 @@ body {
   align-items: center;
   gap: 15px;
 }
-#post_form button {
-  width: 150px;
-  height: 45px;
+.post_form button {
+  width: 40px;
+  height: 40px;
   border: 0;
-  border-radius: 10px;
+  border-radius: 50%;
   background-color: #fd2b01;
   font-size: 20px;
   font-weight: 600;
@@ -302,7 +306,7 @@ body {
   margin-top: 15px;
   box-shadow: 0px 1px 3px 0px rgba(129, 129, 129, 0.334);
 }
-#post_form button:hover {
+.post_form button:hover {
   background-color: rgba(253, 43, 1, 0.7529411765);
 }
 
@@ -311,24 +315,42 @@ body {
   display: flex;
   flex-flow: row nowrap;
   justify-content: center;
+  align-items: center;
   font-size: 23px;
 }
 .post_input textarea {
-  border: 2px solid #fd2b01;
-  background-color: #ffd7d7;
+  border: 2px solid #4e5166;
+  background-color: rgba(78, 81, 102, 0.0784313725);
   width: 500px;
   font-size: 23px;
   border-radius: 15px;
   width: 600px;
   resize: none;
 }
-.post_input input {
-  border: 2px solid #fd2b01;
-  background-color: #ffd7d7;
-  width: 500px;
-  font-size: 15px;
-  border-radius: 15px;
-  width: 270px;
+.post_input input[type=file] {
+  display: none;
+}
+.post_input .custom-file-input {
+  margin-right: 15px;
+  width: 40px;
+  height: 40px;
+  border: 0;
+  border-radius: 50%;
+  background-color: #fd2b01;
+  font-size: 20px;
+  font-weight: 600;
+  font-family: "Lato";
+  text-align: center;
+  color: #fff;
+  margin-top: 15px;
+  box-shadow: 0px 1px 3px 0px rgba(129, 129, 129, 0.334);
+}
+.post_input .custom-file-input .fa-paperclip {
+  position: relative;
+  top: 16%;
+}
+.post_input .custom-file-input:hover {
+  background-color: rgba(253, 43, 1, 0.7529411765);
 }
 
 #post_wrapper {
@@ -356,7 +378,7 @@ body {
   align-self: center;
 }
 .post_body .image img {
-  max-width: 100%;
+  max-width: 1000px;
 }
 
 .author {
@@ -385,6 +407,21 @@ body {
   flex-flow: row nowrap;
   gap: 15px;
 }
+.manage_button button {
+  background-color: rgba(78, 81, 102, 0.7176470588);
+  height: 45px;
+  border: 0;
+  border-radius: 10px;
+  font-size: 20px;
+  font-weight: 500;
+  font-family: "Lato";
+  text-align: center;
+  color: rgb(255, 255, 255);
+  box-shadow: 0px 1px 3px 0px rgba(129, 129, 129, 0.334);
+}
+.manage_button button:hover {
+  background-color: #4e5166;
+}
 
 .like_button {
   margin-right: 15px;
@@ -392,11 +429,38 @@ body {
   flex-flow: row nowrap;
   gap: 15px;
 }
+.like_button button {
+  background-color: rgba(78, 81, 102, 0.7176470588);
+  height: 45px;
+  border: 0;
+  border-radius: 10px;
+  font-size: 20px;
+  font-weight: 500;
+  font-family: "Lato";
+  text-align: center;
+  color: rgb(255, 255, 255);
+  box-shadow: 0px 1px 3px 0px rgba(129, 129, 129, 0.334);
+}
+.like_button button:hover {
+  background-color: #4e5166;
+}
 .like_button .green {
-  color: green;
+  color: lime;
 }
 .like_button .red {
   color: red;
+}
+
+.like_text {
+  margin: 0 5px;
+}
+
+.post .post_form {
+  align-items: flex-start;
+  margin-left: 15px;
+}
+.post .post_input {
+  justify-content: flex-start;
 }
 
 /*# sourceMappingURL=index.css.map */

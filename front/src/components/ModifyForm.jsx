@@ -25,17 +25,25 @@ const ModifyForm = (props) => {
 
   return (
     <>
-      <form className="forefront" onSubmit={handleSubmit(modifyPost)}>
-        <p>Modify the post</p>
-        <div>
-          <label>Text Content</label>
-          <input type="Text" {...register("textContent")} />
+      <form className="post_form" onSubmit={handleSubmit(modifyPost)}>
+        <div className="post_input">
+          <label>&#32;</label>
+          <textarea type="Text" {...register("textContent")} />
         </div>
-        <div>
-          <label>Image</label>
-          <input type="file" accept="image/*" {...register("file")} />
+        <div className="post_input">
+          <label for="file-modify" className="custom-file-input">
+            <i class="fa-solid fa-paperclip"></i>
+          </label>
+          <input
+            id="file-modify"
+            type="file"
+            accept="image/*"
+            {...register("file")}
+          />
+          <button>
+            <i class="fa-solid fa-check"></i>
+          </button>
         </div>
-        <button>Commit changes</button>
       </form>
     </>
   );

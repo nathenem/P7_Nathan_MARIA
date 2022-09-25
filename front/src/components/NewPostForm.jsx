@@ -25,7 +25,7 @@ const NewPostForm = () => {
 
   return (
     <>
-      <form id="post_form" onSubmit={handleSubmit(sendNewPost)}>
+      <form className="post_form" onSubmit={handleSubmit(sendNewPost)}>
         <div className="post_input">
           <label>&#0;</label>
           <textarea
@@ -38,10 +38,19 @@ const NewPostForm = () => {
           />
         </div>
         <div className="post_input">
-          <label>&#0;</label>
-          <input type="file" accept="image/*" {...register("file")} />
+          <label for="file-upload" className="custom-file-input">
+            <i class="fa-solid fa-paperclip"></i>
+          </label>
+          <input
+            id="file-upload"
+            type="file"
+            accept="image/*"
+            {...register("file")}
+          />
+          <button>
+            <i class="fa-solid fa-paper-plane"></i>
+          </button>
         </div>
-        <button>Envoyer</button>
       </form>
     </>
   );
