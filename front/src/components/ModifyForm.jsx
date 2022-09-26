@@ -32,7 +32,7 @@ const ModifyForm = (props) => {
         </div>
         <div className="post_input">
           <label for="file-modify" className="custom-file-input">
-            <i class="fa-solid fa-paperclip"></i>
+            <i className="fa-solid fa-paperclip"></i>
           </label>
           <input
             id="file-modify"
@@ -41,7 +41,7 @@ const ModifyForm = (props) => {
             {...register("file")}
           />
           <button>
-            <i class="fa-solid fa-check"></i>
+            <i className="fa-solid fa-check"></i>
           </button>
         </div>
       </form>

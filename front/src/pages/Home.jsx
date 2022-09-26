@@ -33,8 +33,10 @@ const Home = () => {
     axios
       .get("http://localhost:3000/api/posts")
       .then((res) => {
-        setPosts(res.data);
-        sortPost();
+        console.log(res.data);
+        setPosts(res.data.sort((a, b) => new Date(b.date) - new Date(a.date)));
+        //setPosts(res.data.reverse());
+        console.log(posts);
       })
       .catch((err) => {
         console.log(err);
@@ -48,14 +50,14 @@ const Home = () => {
     document.documentElement.scrollTop = 0;
   };
 
-  const sortPost = () => {
+  /*const sortPost = () => {
     posts
       .sort((a, b) => {
         return b.date - a.date;
       })
       .reverse();
-    console.log(posts);
-  };
+    return posts;
+  };*/
 
   return (
     <>

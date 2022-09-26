@@ -39,7 +39,7 @@ const NewPostForm = () => {
         </div>
         <div className="post_input">
           <label for="file-upload" className="custom-file-input">
-            <i class="fa-solid fa-paperclip"></i>
+            <i className="fa-solid fa-paperclip"></i>
           </label>
           <input
             id="file-upload"
@@ -48,7 +48,7 @@ const NewPostForm = () => {
             {...register("file")}
           />
           <button>
-            <i class="fa-solid fa-paper-plane"></i>
+            <i className="fa-solid fa-paper-plane"></i>
           </button>
         </div>
       </form>

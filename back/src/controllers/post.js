@@ -31,6 +31,7 @@ exports.create = (req, res) => {
           ...req.body,
           author: user.userName,
           authorId: user._id,
+          date: new Date(),
           imageUrl: `${req.protocol}://${req.get("host")}/images/${
             req.file.filename
           }`,
@@ -48,6 +49,7 @@ exports.create = (req, res) => {
             ...req.body,
             author: user.userName,
             authorId: user._id,
+            date: new Date(),
           });
 
           post.save().catch((err) => {

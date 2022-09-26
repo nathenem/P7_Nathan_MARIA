@@ -59,14 +59,14 @@ const Post = (props) => {
               <div className="manage_button">
                 {(props.user.isAdmin ||
                   props.post.authorId === props.user._id) && (
-                  <button classeName="modifybutton" onClick={modifyPost}>
-                    <i class="fa-solid fa-pen like_text"></i>
+                  <button className="modifybutton" onClick={modifyPost}>
+                    <i className="fa-solid fa-pen like_text"></i>
                   </button>
                 )}
                 {(props.user.isAdmin ||
                   props.post.authorId === props.user._id) && (
-                  <button classeName="deletebutton" onClick={deletePost}>
-                    <i class="fa-solid fa-trash-can like_text"></i>
+                  <button className="deletebutton" onClick={deletePost}>
+                    <i className="fa-solid fa-trash-can like_text"></i>
                   </button>
                 )}
               </div>
