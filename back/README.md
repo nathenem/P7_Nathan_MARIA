@@ -12,3 +12,6 @@
 `mongoose`
 `multer`
 `password-validator`
+
+`node`
+`nodemon`

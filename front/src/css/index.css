@@ -354,14 +354,14 @@ body {
 }
 
 #post_wrapper {
-  width: 100%;
+  width: 1300px;
   display: flex;
   flex-flow: column nowrap;
   align-items: center;
 }
 
 .post {
-  width: 95%;
+  width: 90%;
   display: flex;
   flex-flow: column nowrap;
   border: 2px solid #4e5166;

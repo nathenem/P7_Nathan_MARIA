@@ -26,7 +26,6 @@ exports.create = (req, res) => {
   User.findById(req.auth.userId)
     .then((user) => {
       if (req.body && req.file) {
-        console.log("fichier");
         const post = new Post({
           ...req.body,
           author: user.userName,
@@ -44,7 +43,6 @@ exports.create = (req, res) => {
         res.status(201).json({ message: "Post et image publiés" });
       } else {
         if (req.body) {
-          console.log("pas fichier");
           const post = new Post({
             ...req.body,
             author: user.userName,
